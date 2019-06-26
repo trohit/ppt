@@ -10,6 +10,11 @@
 
 import jinja2
 import os
+import glob
+
+def get_list_of_interesting_images(filt="./images/*.jpg"):
+    ll = glob.glob("./images/*.jpg")
+    return ll
 
 def make_list(fname):
     with open(fname) as f:
@@ -36,7 +41,8 @@ generated from https://github.com/trohit/ppts/hovercraft_gallery.py
 
 if __name__ == "__main__":
     # ls -1 images > ls.txt
-    ll = make_list("ls.txt")
+    # ll = make_list("ls.txt")
+    ll = get_list_of_interesting_images()
     #print(ll)
     #output = template.render()
     render_output('hovercraft_gallery.tmpl', ll)
